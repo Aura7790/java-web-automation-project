@@ -16,13 +16,13 @@ public class HomePage {
     private WebElement cookiesConsentBtn;
 
     @FindBy(xpath = "//a[contains(text(),'Signup / Login')]")
-    private WebElement loginLink;
+    private WebElement loginSignupLink;
 
     public void clickCookiesConsent() {
         cookiesConsentBtn.click();
     }
 
-    public void clickLoginLink(){
-        loginLink.click();
+    public void clickLoginSignupLink(){
+        loginSignupLink.click();
     }
 }

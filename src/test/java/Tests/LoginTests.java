@@ -40,7 +40,7 @@ public class LoginTests {
     public void loginWithValidData() {
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
         // 3. Insert valid email and password and clicks Login button
@@ -59,10 +59,10 @@ public class LoginTests {
     public void loginWithNotRegisteredUser() {
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
-        // 3. Insert valid email and password and clicks Login button
+        // 3. Insert not registered email and password and click Login button
         loginPage.setEmailInput(notRegisteredEmail);
         loginPage.setPasswordInput(validPassword);
         loginPage.clickLoginButton();
@@ -74,10 +74,10 @@ public class LoginTests {
     public void loginWithWrongPassword() {
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
-        // 3. Insert valid email and password and clicks Login button
+        // 3. Insert valid email and wrong password and click Login button
         loginPage.setEmailInput(validEmail);
         loginPage.setPasswordInput(wrongPassword);
         loginPage.clickLoginButton();
@@ -90,11 +90,11 @@ public class LoginTests {
     public void loginWithEmptyPassword() {
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         LoginPage loginPage = new LoginPage(driver);
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
-        // 3. Insert valid email and password and clicks Login button
+        // 3. Insert valid email and empty password and click Login button
         loginPage.setEmailInput(validEmail);
         loginPage.setPasswordInput("");
         loginPage.clickLoginButton();
@@ -108,10 +108,10 @@ public class LoginTests {
     public void loginWithEmptyEmail() {
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
-        // 3. Insert valid email and password and clicks Login button
+        // 3. Insert empty email and valid password and click Login button
         loginPage.setEmailInput("");
         loginPage.setPasswordInput(validPassword);
         loginPage.clickLoginButton();
@@ -125,10 +125,10 @@ public class LoginTests {
     public void loginWithEmptyCredentials(){
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
-        // 3. Insert valid email and password and clicks Login button
+        // 3. Insert empty email and password and click Login button
         loginPage.setEmailInput("");
         loginPage.setPasswordInput("");
         loginPage.clickLoginButton();
@@ -139,10 +139,40 @@ public class LoginTests {
     }
 
     @Test
-    public void loginWithSignUpCredentials(){
+    public void loginInvalidEmailFormat(){
         // 1. Click on Login Link from HomePage
         homePage.clickCookiesConsent();
-        homePage.clickLoginLink();
+        homePage.clickLoginSignupLink();
+        // 2. Wait for Login Modal to display
+        Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
+        // 3. Insert invalid email format
+        loginPage.setEmailInput("test"); // test171@
+        loginPage.clickLoginButton();
+        // 4. Verify validation message is shown for email field
+        String validationMsg = loginPage.getEmailValidationMessage();
+        Assert.assertTrue(validationMsg.toLowerCase().contains("is missing an '@'") || !validationMsg.isEmpty());
+    }
+
+    @Test
+    public void loginInvalidEmailFormat2(){
+        // 1. Click on Login Link from HomePage
+        homePage.clickCookiesConsent();
+        homePage.clickLoginSignupLink();
+        // 2. Wait for Login Modal to display
+        Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
+        // 3. Insert invalid email format
+        loginPage.setEmailInput("test171@");
+        loginPage.clickLoginButton();
+        // 4. Verify validation message is shown for email field
+        String validationMsg = loginPage.getEmailValidationMessage();
+        Assert.assertTrue(validationMsg.toLowerCase().contains("'test171@' is incomplete") || !validationMsg.isEmpty());
+    }
+
+    @Test
+    public void loginWithCredentialsInsertedInSignUpForm(){
+        // 1. Click on Login Link from HomePage
+        homePage.clickCookiesConsent();
+        homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
         // 3. Insert valid name and email in the signUp form and click Login button
