@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.AccountCreationPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.SignUpPage;
@@ -17,6 +18,8 @@ public class SignUpTests {
     private WebDriver driver;
     SignUpPage signUpPage;
     HomePage homePage;
+    AccountCreationPage accountCreationPage;
+    LoginPage loginPage;
 
     String baseUrl = "https://automationexercise.com/";
     String nameInput = "Test17";
@@ -33,6 +36,8 @@ public class SignUpTests {
 
         signUpPage = new SignUpPage(driver);
         homePage = new HomePage(driver);
+        accountCreationPage = new AccountCreationPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
@@ -89,6 +94,32 @@ public class SignUpTests {
         String validationMsg = signUpPage.getEmailValidationMessage();
         Assert.assertTrue(validationMsg.toLowerCase().contains("is missing an '@'") || !validationMsg.isEmpty());
 
+    }
+
+    @Test
+    public void signupWithValidCredentialsFull(){
+        // 1. Navigate to Signup Page
+        homePage.clickCookiesConsent();
+        homePage.clickLoginSignupLink();
+        // 2. Enter name and unique email
+        signUpPage.setNameInput(nameInput);
+        signUpPage.setEmailInput(uniqueEmail);
+        signUpPage.clickSignUpButton();
+        // 3. Fill account information
+        accountCreationPage.fillAccountInformation("Test@1234");
+        // 4. Fill address details
+        accountCreationPage.fillAddressDetails();
+        // 5. Submit the account form
+        accountCreationPage.submitForm();
+        // 6. Assert "Account Created!" is displayed
+        Assert.assertEquals(accountCreationPage.getAccountCreatedText(), "ACCOUNT CREATED!");
+        // 7. Click Continue
+        accountCreationPage.clickContinue();
+        // 8. Verify user is logged in
+        Assert.assertTrue(loginPage.isLoginSuccessful());
+        // 9. Logout and verify user logged out with success
+        loginPage.logout();
+        Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
     }
 
     @After
