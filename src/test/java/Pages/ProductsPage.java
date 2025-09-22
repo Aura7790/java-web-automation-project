@@ -46,6 +46,18 @@ public class ProductsPage {
     @FindBy(className = "shop-details-tab")
     private WebElement reviewSection;
 
+    @FindBy(xpath = "(//a[contains(text(),'Add to cart')])[1]")
+    private WebElement firstAddToCartButton;
+
+    @FindBy(xpath = "//button[text()='Continue Shopping']")
+    private WebElement continueShoppingButton;
+
+    @FindBy(xpath = "//a[@href='/view_cart']")
+    private WebElement viewCartLink;
+
+    @FindBy(xpath = "//tbody/tr")
+    private List<WebElement> cartItems;
+
     public void goToProductsPage(){
         productLink.click();
     }
@@ -96,5 +108,29 @@ public class ProductsPage {
 
     public boolean isReviewSectionDisplayed(){
         return reviewSection.isDisplayed();
+    }
+
+    public void scrollAddToCartButtonIntoView(){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", firstAddToCartButton);
+    }
+
+    public void addProductToCart(){
+        firstAddToCartButton.click();
+    }
+
+    public void clickContinueShopping(){
+        continueShoppingButton.click();
+    }
+
+    public void scrollCartIntoView(){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", viewCartLink);
+    }
+
+    public void goToCart(){
+        viewCartLink.click();
+    }
+
+    public int getCartItemCount() {
+        return cartItems.size();
     }
 }

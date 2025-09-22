@@ -81,6 +81,21 @@ public class ProductsTests {
         Assert.assertTrue(productsPage.isReviewSectionDisplayed());
     }
 
+    @Test
+    public void addItemToCart(){
+        homePage.clickCookiesConsent();
+        productsPage.goToProductsPage();
+        productsPage.isProductsPageDisplayed();
+
+        productsPage.scrollAddToCartButtonIntoView();
+        productsPage.addProductToCart();
+        productsPage.clickContinueShopping();
+
+        productsPage.scrollCartIntoView();
+        productsPage.goToCart();
+        Assert.assertTrue(productsPage.getCartItemCount() > 0);
+    }
+
     @After
     public void tearDown(){
         driver.close();
