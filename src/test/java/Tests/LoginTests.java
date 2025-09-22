@@ -38,7 +38,7 @@ public class LoginTests {
 
     @Test
     public void loginWithValidData() {
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -50,6 +50,7 @@ public class LoginTests {
         // 4. Verify Login successful
         Assert.assertTrue(loginPage.isLoginSuccessful());
         // 5. Logout and verify user logged out with success
+        loginPage.isLogoutLinkDisplayed();
         loginPage.logout();
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
 
@@ -57,7 +58,7 @@ public class LoginTests {
 
     @Test
     public void loginWithNotRegisteredUser() {
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -72,7 +73,7 @@ public class LoginTests {
 
     @Test
     public void loginWithWrongPassword() {
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -88,7 +89,7 @@ public class LoginTests {
 
     @Test
     public void loginWithEmptyPassword() {
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -106,7 +107,7 @@ public class LoginTests {
 
     @Test
     public void loginWithEmptyEmail() {
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -123,7 +124,7 @@ public class LoginTests {
 
     @Test
     public void loginWithEmptyCredentials(){
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -140,7 +141,7 @@ public class LoginTests {
 
     @Test
     public void loginInvalidEmailFormat(){
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -155,7 +156,7 @@ public class LoginTests {
 
     @Test
     public void loginInvalidEmailFormat2(){
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display
@@ -170,7 +171,7 @@ public class LoginTests {
 
     @Test
     public void loginWithCredentialsInsertedInSignUpForm(){
-        // 1. Click on Login Link from HomePage
+        // 1. Navigate to Login Page
         homePage.clickCookiesConsent();
         homePage.clickLoginSignupLink();
         // 2. Wait for Login Modal to display

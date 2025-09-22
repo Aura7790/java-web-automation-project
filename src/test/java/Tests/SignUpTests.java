@@ -118,8 +118,26 @@ public class SignUpTests {
         // 8. Verify user is logged in
         Assert.assertTrue(loginPage.isLoginSuccessful());
         // 9. Logout and verify user logged out with success
+        loginPage.isLogoutLinkDisplayed();
         loginPage.logout();
         Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
+    }
+
+    @Test
+    public void signupWithCredentialsInsertedInLoginForm() {
+        // 1. Navigate to Signup Page
+        homePage.clickCookiesConsent();
+        homePage.clickLoginSignupLink();
+        // 2. Wait for Signup Modal to display
+        Assert.assertEquals(loginPage.getHeadingText(), "Login to your account");
+        // 3. Insert valid name and email in the Login form and click Signup button
+        loginPage.setEmailInput(uniqueEmail);
+        loginPage.setPasswordInput("Password01");
+        signUpPage.clickSignUpButton();
+        // 4. Verify validation message is shown for Signup name field
+        Assert.assertTrue(signUpPage.getNameValidationMessage().contains("Please fill in this field."));
+        String validationMessage = signUpPage.getNameValidationMessage();
+        Assert.assertFalse(validationMessage.isEmpty());
     }
 
     @After
