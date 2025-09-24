@@ -16,15 +16,15 @@ import java.util.UUID;
 
 public class SignUpTests {
     private WebDriver driver;
-    SignUpPage signUpPage;
-    HomePage homePage;
-    AccountCreationPage accountCreationPage;
-    LoginPage loginPage;
+    private SignUpPage signUpPage;
+    private HomePage homePage;
+    private AccountCreationPage accountCreationPage;
+    private LoginPage loginPage;
 
-    String baseUrl = "https://automationexercise.com/";
-    String nameInput = "Test17";
-    String uniqueEmail = "test_" + UUID.randomUUID().toString().substring(0, 6) + "@example.com";
-    String existentEmail = "test171@gmail.com";
+    final String baseUrl = "https://automationexercise.com/";
+    final String nameInput = "Test17";
+    final String uniqueEmail = "test_" + UUID.randomUUID().toString().substring(0, 6) + "@example.com";
+    final String existentEmail = "test171@gmail.com";
 
     @Before
     public void setup(){

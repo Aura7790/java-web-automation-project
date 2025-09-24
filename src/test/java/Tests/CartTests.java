@@ -13,11 +13,11 @@ import java.time.Duration;
 
 public class CartTests {
     private WebDriver driver;
-    ProductsPage productsPage;
-    HomePage homePage;
-    CartPage cartPage;
+    private ProductsPage productsPage;
+    private HomePage homePage;
+    private CartPage cartPage;
 
-    String baseUrl = "https://automationexercise.com/";
+    final String baseUrl = "https://automationexercise.com/";
 
     @Before
     public void setup(){

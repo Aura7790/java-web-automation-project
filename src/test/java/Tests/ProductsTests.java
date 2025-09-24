@@ -12,10 +12,10 @@ import java.time.Duration;
 
 public class ProductsTests {
     private WebDriver driver;
-    ProductsPage productsPage;
-    HomePage homePage;
+    private ProductsPage productsPage;
+    private HomePage homePage;
 
-    String baseUrl = "https://automationexercise.com/";
+    final String baseUrl = "https://automationexercise.com/";
 
     @Before
     public void setup(){

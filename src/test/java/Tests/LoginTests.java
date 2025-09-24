@@ -13,15 +13,15 @@ import java.time.Duration;
 
 public class LoginTests {
     private WebDriver driver;
-    HomePage homePage;
-    LoginPage loginPage;
-    SignUpPage signUpPage;
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private SignUpPage signUpPage;
 
-    String baseUrl = "https://automationexercise.com/";
-    String validEmail = "test171@gmail.com";
-    String validPassword = "test1234#";
-    String notRegisteredEmail = "bla1712@yahoo.com";
-    String wrongPassword = "wrong password";
+    final String baseUrl = "https://automationexercise.com/";
+    final String validEmail = "test171@gmail.com";
+    final String validPassword = "test1234#";
+    final String notRegisteredEmail = "bla1712@yahoo.com";
+    final String wrongPassword = "wrong password";
 
     @Before
     public void setup(){
