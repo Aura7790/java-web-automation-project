@@ -17,11 +17,11 @@ public class LoginTests {
     private LoginPage loginPage;
     private SignUpPage signUpPage;
 
-    final String baseUrl = "https://automationexercise.com/";
-    final String validEmail = "test171@gmail.com";
-    final String validPassword = "test1234#";
-    final String notRegisteredEmail = "bla1712@yahoo.com";
-    final String wrongPassword = "wrong password";
+    private final String baseUrl = "https://automationexercise.com/";
+    private final String validEmail = "test171@gmail.com";
+    private final String validPassword = "test1234#";
+    private final String notRegisteredEmail = "bla1712@yahoo.com";
+    private final String wrongPassword = "wrong password";
 
     @Before
     public void setup(){

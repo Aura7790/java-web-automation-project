@@ -21,10 +21,10 @@ public class SignUpTests {
     private AccountCreationPage accountCreationPage;
     private LoginPage loginPage;
 
-    final String baseUrl = "https://automationexercise.com/";
-    final String nameInput = "Test17";
-    final String uniqueEmail = "test_" + UUID.randomUUID().toString().substring(0, 6) + "@example.com";
-    final String existentEmail = "test171@gmail.com";
+    private final String baseUrl = "https://automationexercise.com/";
+    private final String nameInput = "Test17";
+    private final String uniqueEmail = "test_" + UUID.randomUUID().toString().substring(0, 6) + "@example.com";
+    private final String existentEmail = "test171@gmail.com";
 
     @Before
     public void setup(){

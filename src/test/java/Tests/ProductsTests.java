@@ -15,7 +15,7 @@ public class ProductsTests {
     private ProductsPage productsPage;
     private HomePage homePage;
 
-    final String baseUrl = "https://automationexercise.com/";
+    private final String baseUrl = "https://automationexercise.com/";
 
     @Before
     public void setup(){
